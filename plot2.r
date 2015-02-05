@@ -1,0 +1,7 @@
+Sys.setlocale("LC_TIME", "English")
+data<-read.csv("household_power_consumption.txt",sep=";",na.strings="?")
+datom<-subset(data,data$Date=="1/2/2007"|data$Date=="2/2/2007")
+datom$Time<-strptime(paste(datom$Date,datom$Time),format='%d/%m/%Y %H:%M:%S')
+plot(datom$Time,datom$Global_active_powe,type="l",xlab="",ylab="Global Active Power (killowats)")
+dev.copy(png,file="plot2.png")
+dev.off()

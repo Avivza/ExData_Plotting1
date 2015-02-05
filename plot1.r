@@ -1,0 +1,6 @@
+data<-read.csv("household_power_consumption.txt",sep=";",na.strings="?")
+datom<-subset(data,data$Date=="1/2/2007"|data$Date=="2/2/2007")
+datom$Date<-as.Date(datom$Date,format='%d/%m/%Y')
+plot1<-hist(datom$Global_active_power,col="2",ylab="Frequency",xlab="Global Active Power(killowates)",main="Global Active Power")
+dev.copy(png,file="plot1.png")
+dev.off()
